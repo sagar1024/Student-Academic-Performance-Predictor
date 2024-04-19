@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+</head>
+<body>
+    <h1>Prediction Results for Student {{ student.student_id }}</h1>
+
+    <h2>Student Information</h2>
+    <p>Student ID: {{ student.student_id }}</p>
+    <p>Semester: {{ student.semester }}</p>
+
+    <h2>Subjects and Scores</h2>
+    <table border="1">
+        <tr>
+            <th>Subject</th>
+            <th>CIA Score</th>
+            <th>Midsem Score</th>
+        </tr>
+        {% for subject, student_subject in zipped_data %}
+            <tr>
+                <td>{{ subject }}</td>
+                <td>{{ student_subject.cia_1 }}</td>
+                <td>{{ student_subject.mid_sem }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Predicted End Result Percentages</h2>
+
+    <ul>
+    {% for prediction in predicted_end_result_percentages %}
+        <p>{{ prediction }}</p>
+    {% endfor %}
+    </ul>
+
+</body>
+</html>
